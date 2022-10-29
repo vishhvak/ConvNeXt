@@ -97,3 +97,53 @@ class ConvNeXt(torch.nn.Module):
     out = self.embeddings(out)
     out = self.head(out)
     return out 
+
+def ConvNeXt_T(in_channels, num_classes):
+  stage_config = [
+        # Expansion Ratio, Channels, No. of Blocks/Depth, Dropout
+        [4, 96,  3, 0.0],
+        [4, 192, 3, 0.0],
+        [4, 384, 9, 0.0],
+        [4, 768, 3, 0.0],
+    ]
+  return ConvNeXt(in_channels=in_channels, num_classes=num_classes, stage_config=stage_config)
+
+def ConvNeXt_S(in_channels, num_classes):
+  stage_config = [
+        # Expansion Ratio, Channels, No. of Blocks/Depth, Dropout
+        [4, 96,   3, 0.1],
+        [4, 192,  3, 0.1],
+        [4, 384, 27, 0.1],
+        [4, 768,  3, 0.1],
+    ]
+  return ConvNeXt(in_channels=in_channels, num_classes=num_classes, stage_config=stage_config)
+
+def ConvNeXt_B(in_channels, num_classes):
+  stage_config = [
+        # Expansion Ratio, Channels, No. of Blocks/Depth, Dropout
+        [4, 128,   3, 0.2],
+        [4, 256,   3, 0.2],
+        [4, 512,  27, 0.2],
+        [4, 1024,  3, 0.2],
+    ]
+  return ConvNeXt(in_channels=in_channels, num_classes=num_classes, stage_config=stage_config)
+
+def ConvNeXt_L(in_channels, num_classes):
+  stage_config = [
+        # Expansion Ratio, Channels, No. of Blocks/Depth, Dropout
+        [4,  192,   3, 0.3],
+        [4,  384,   3, 0.3],
+        [4,  768,  27, 0.3],
+        [4, 1536,   3, 0.3],
+    ]
+  return ConvNeXt(in_channels=in_channels, num_classes=num_classes, stage_config=stage_config)
+
+def ConvNeXt_XL(in_channels, num_classes):
+  stage_config = [
+        # Expansion Ratio, Channels, No. of Blocks/Depth, Dropout
+        [4,   256,   3, 0.4],
+        [4,   512,   3, 0.4],
+        [4,  1024,  27, 0.4],
+        [4,  2048,   3, 0.4],
+    ]
+  return ConvNeXt(in_channels=in_channels, num_classes=num_classes, stage_config=stage_config)
